@@ -66,6 +66,6 @@ Project Impact
 Zero booking failures during Black Friday traffic spike.
 
 🛠 How to Run
-git clone https://github.com/yourusername/gotravel
+git clone https://github.com/54N70SH/gotravel
 docker-compose up  # Starts Postgres/Redis
 go run main.go
