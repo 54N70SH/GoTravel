@@ -1,5 +1,5 @@
 # GoTravel
-1. Concurrent Flight Search (Goroutines + Channels)
+1. Concurrent Flight Search (Goroutines + Channels):
    
 func SearchFlights(destinations []string) ([]Flight, error) {
     results := make(chan Flight, len(destinations))
@@ -26,7 +26,8 @@ func SearchFlights(destinations []string) ([]Flight, error) {
     return flights, nil
 }
 
-3. Redis Caching Layer
+2. Redis Caching Layer:
+   
 func GetCachedHotels(location string) ([]Hotel, error) {
     cacheKey := fmt.Sprintf("hotels:%s", location)
     cached, err := redisClient.Get(cacheKey).Bytes()
@@ -46,7 +47,9 @@ func GetCachedHotels(location string) ([]Hotel, error) {
     redisClient.Set(cacheKey, serialized, 10*time.Minute) // TTL
     return hotels, nil
 }
-4. Error Handling Middleware (Gin)
+
+3.Error Handling Middleware (Gin):
+
 func ErrorHandler() gin.HandlerFunc {
     return func(c *gin.Context) {
         c.Next() // Process request
@@ -61,12 +64,14 @@ func ErrorHandler() gin.HandlerFunc {
     }
 }
 
-Project Impact
+4. Project Impact:
+   
 40% faster than legacy Python service.
 
 Zero booking failures during Black Friday traffic spike.
 
-🛠 How to Run
+5. How to Run:
+   
 git clone https://github.com/54N70SH/gotravel
 docker-compose up  # Starts Postgres/Redis
 go run main.go
