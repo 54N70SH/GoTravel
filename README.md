@@ -1,5 +1,6 @@
 # GoTravel
 1. Concurrent Flight Search (Goroutines + Channels)
+   
 func SearchFlights(destinations []string) ([]Flight, error) {
     results := make(chan Flight, len(destinations))
     var wg sync.WaitGroup
@@ -25,7 +26,7 @@ func SearchFlights(destinations []string) ([]Flight, error) {
     return flights, nil
 }
 
-2. Redis Caching Layer
+3. Redis Caching Layer
 func GetCachedHotels(location string) ([]Hotel, error) {
     cacheKey := fmt.Sprintf("hotels:%s", location)
     cached, err := redisClient.Get(cacheKey).Bytes()
@@ -45,7 +46,7 @@ func GetCachedHotels(location string) ([]Hotel, error) {
     redisClient.Set(cacheKey, serialized, 10*time.Minute) // TTL
     return hotels, nil
 }
-3. Error Handling Middleware (Gin)
+4. Error Handling Middleware (Gin)
 func ErrorHandler() gin.HandlerFunc {
     return func(c *gin.Context) {
         c.Next() // Process request
